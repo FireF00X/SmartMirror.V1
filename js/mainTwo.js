@@ -997,66 +997,38 @@ function checkItems(container, name) {
                 secOp = item.querySelector('.item-text').innerHTML;
                 //======================================
 
-                // let form = document.querySelector('.starting-page .form form');
-                // let submitBtn = document.querySelector('.form form .submit-btn');
-                // form.addEventListener('submit', (e) => {
-                //     // stop submittin from taking actions
-                //     e.preventDefault();
-                //     // get thr form's data
-                //     let formData = new FormData(form);
-                //     let data = Object.fromEntries(formData);
-                //     // create the new meal
-                //     const newMeal = {
-                //         "location": `../Added/${data.location}`,
-                //         "title": `${data.title}`,
-                //         "audio": "",
-                //         "Ingredients": [`${data.Ingredients}`
-                //         ],
-                //         "description": `${data.description}`
-                //     };
-                //     let mealName = data['meal-name'];
-                //     // fetch the object we will add the new object on
-                //     let meals;
-                //     fetchingData()
-                //         .then(data => {
-                //             console.log(mealName);
-                //             meals = data['food_category'][`${firstOp}`][`${secOp}`]['meals']
-                //             //return it to stringify
-                //             let jsonData = JSON.stringify(meals[mealName] = newMeal);
-                //             fetch('../db.json', {
-                //                 method: 'POST',
-                //                 headers: {
-                //                     'Content-Type': 'application/json'
-                //                 },
-                //                 body: jsonData
-                //             })
-                //             console.log(meals);
-                //         });
-
-                // })
+                let form = document.querySelector('.starting-page .form form');
+                let submitBtn = document.querySelector('.form form .submit-btn');
+                form.addEventListener('submit', (e) => {
+                    // stop submittin from taking actions
+                    e.preventDefault();
+                    // get thr form's data
+                    let formData = new FormData(form);
+                    let data = Object.fromEntries(formData);
+                    let mealName = data['meal-name'];
+                    // create the new meal
+                    const tryItBaby = {
+                        food_category: {
+                            [firstOp]: {
+                                [secOp]: {
+                                    meals: {
+                                        [mealName]: {
+                                            location: `${data.location}`,
+                                            title: data.title,
+                                            audio: "",
+                                            Ingredients: [`${data.Ingredients}`],
+                                            description: `${data.description}`
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    console.log(tryItBaby);
+                })
             }
         }
     });
 }
 checkItems(mainMealContainer, 'main-meal-filter');
 checkItems(subCatContainer, 'sub-cat-filter');
-
-
-// get thr form's data
-let form = document.querySelector('.starting-page .form form');
-form.addEventListener('submit', (e) => {
-    // stop submittin from taking actions
-    e.preventDefault();
-    let formData = new FormData(form);
-    let data = Object.fromEntries(formData);
-    let jsonData = JSON.stringify(data);
-    fetch('../db.json', {
-        method: 'post',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: jsonData
-    }).then(res => res.json())
-        .then(data => console.log(data))
-        .catch(error => console.log(error))
-})

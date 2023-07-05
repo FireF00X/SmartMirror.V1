@@ -1000,6 +1000,9 @@ function checkItems(container, name) {
                 let form = document.querySelector('.starting-page .form form');
                 let submitBtn = document.querySelector('.form form .submit-btn');
                 form.addEventListener('submit', (e) => {
+                    submitBtn.onclick = (e) => {
+                        e.preventDefault();
+                    }
                     // stop submittin from taking actions
                     e.preventDefault();
                     // get thr form's data
@@ -1024,9 +1027,9 @@ function checkItems(container, name) {
                             }
                         }
                     }
-                    
+
                     // console it to the browser
-                    console.log(tryItBaby);
+                    console.log(JSON.stringify(tryItBaby));
 
                     // add to the json file
                     fetch('/', {
@@ -1034,7 +1037,7 @@ function checkItems(container, name) {
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify(data)
+                        body: JSON.stringify(tryItBaby)
                     })
                         .then(response => response.json())
                         .then(data => console.log(data))

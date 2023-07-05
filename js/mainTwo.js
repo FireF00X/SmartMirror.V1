@@ -1024,7 +1024,21 @@ function checkItems(container, name) {
                             }
                         }
                     }
+                    
+                    // console it to the browser
                     console.log(tryItBaby);
+
+                    // add to the json file
+                    fetch('/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    })
+                        .then(response => response.json())
+                        .then(data => console.log(data))
+                        .catch(error => console.error(error));
                 })
             }
         }

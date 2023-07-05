@@ -1,0 +1,62 @@
+                // if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+                //     recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+                //     recognition.lang = 'en-US';
+                //     recognition.onresult = function (event) {
+                //         const command = event.results[0][0].transcript;
+                //         console.log(`You said: ${command}`);
+                //         if (command.toLowerCase().includes('egypt') ||
+                //             command.toLowerCase().includes('edict') ||
+                //             command.toLowerCase().includes('a joke')) {
+                //             countryMealsPageFnVoice('Break-fast', 'Egypt')
+                //         } else if (command.toLowerCase().includes('lebanon')) {
+                //             countryMealsPageFnVoice('Break-fast', 'Lebanon')
+                //         } else if (command.toLowerCase().includes('khaligi')||
+                //         command.toLowerCase().includes('Fergie')||
+                //         command.toLowerCase().includes('Khalid')) {
+                //             countryMealsPageFnVoice('Break-fast', 'khaligi')
+                //         } else if (command.toLowerCase().includes('Morocco')) {
+                //             countryMealsPageFnVoice('Break-fast', 'Morocco')
+                //         } else if (command.toLowerCase().includes('French')) {
+                //             countryMealsPageFnVoice('Break-fast', 'French')
+                //         } else if (command.toLowerCase().includes('Italian')) {
+                //             countryMealsPageFnVoice('Break-fast', 'Italian')
+                //         } else if (command.toLowerCase().includes('Turkey')) {
+                //             countryMealsPageFnVoice('Break-fast', 'Turkey')
+                //         } else if (command.toLowerCase().includes('Spanish')) {
+                //             countryMealsPageFnVoice('Break-fast', 'Spanish')
+                //         } else if (command.toLowerCase().includes('Asian')) {
+                //             countryMealsPageFnVoice('Break-fast', 'Asian')
+                //         } else if (command.toLowerCase().includes('back')) {
+                //             closingPages(mealsPage, subCatPage);
+                //         }
+                //     };
+                //     recognition.onend = function () {
+                //         if (!isRecognitionStopped) { // restart recognition only if the flag is false
+                //             recognition.start();
+                //         }
+                //         isRecognitionStopped = false; // reset the flag
+                //     };
+                //     recognition.start();
+                // } else {
+                //     console.log('Web Speech API is not supported');
+                // }
+                
+                            if (command.toLowerCase().includes('breakfast')) {
+                subcategoryPageFnVoice('Break-fast');
+            } else if (command.toLowerCase().includes('dinner')) {
+                subcategoryPageFnVoice('dinner')
+            } else if (command.toLowerCase().includes('lunch')) {
+                subcategoryPageFnVoice('lunch')
+            } else if (command.toLowerCase().includes('desert')) {
+                subcategoryPageFnVoice('desert')
+            } else if (command.toLowerCase().includes('Ice-Cream')) {
+                subcategoryPageFnVoice('Ice-Cream')
+            } else if (command.toLowerCase().includes('beverage')) {
+                subcategoryPageFnVoice('Beverages')
+            } else if (command.toLowerCase().includes('pastries')) {
+                subcategoryPageFnVoice('pastries')
+            } else if (command.toLowerCase().includes('secrets')) {
+                subcategoryPageFnVoice('secrets')
+            } else if (command.toLowerCase().includes('back')) {
+                closingPages(subCatPage, mainCatPage);
+            }
